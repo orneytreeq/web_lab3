@@ -1,0 +1,30 @@
+{% macro render_table(list,first,last) %}
+	{% if ((last > list|length) or (last < 1) or (last < first)) %}
+		{% set last = list|length %}
+		{% set first = 1 %}
+	{% endif %}
+	{% if ((first > list|length) or (first < 1) or (first > last)) %}
+		{% set first = 1 %}
+		{% set last = list|length %}
+	{% endif %}
+	<table>
+		 <tr>
+		 	<th>title</th>
+		 	<th>author</th>
+		 	<th>price</th>
+		 </tr>
+	{% for item in list[first:last+1] %}
+		 <tr>
+		 {% for key, value in item.items() %}
+			     <td>{{value}}</td>  
+	     {% endfor %}
+	     </tr>
+	 {% endfor %} 
+	 </table>
+{% endmacro %}
+
+<html>
+	<body>
+		 {{ render_table(list,first,last) }}
+	 </body>
+</html>

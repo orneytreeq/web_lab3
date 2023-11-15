@@ -1,0 +1,15 @@
+{% macro render_list(dict, int) %}
+   {% for key, value in dict.items() %}
+      <div>
+	     <input type="radio" value=value {% if key == int %}checked{% endif %} />
+	     <label for="huey">{{value}}</label>
+	  </div>
+   {% endfor %}
+{% endmacro %}
+
+
+<html>
+	<body>
+		 {{ render_list(dict, int) }}
+	 </body>
+</html>
